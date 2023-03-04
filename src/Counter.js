@@ -1,8 +1,36 @@
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment, incrementByAmount } from "./features/counterSlice";
 
-function Counter() {
+
+const Counter = () => {
+
+    // Call useSelector to grab the current value of our state variable
+    // from the store, and assign it to a variable named "count"
+    const count = useSelector((state) => state.value)
+
+    // And include the useDispatch hook...
+    const dispatch = useDispatch()
+    const [input, setInput] = useState(0)
+
+    const byAmountSubmit = (e) => {
+        e.preventDefault()
+        dispatch(incrementByAmount(Number(input)))
+    }
+
     return (
-      <div >
-
+      <div>
+        <h1> {count} </h1>
+        <button onClick={() => dispatch(increment())} >
+            increment
+        </button>
+        <button onClick={() => dispatch(decrement())} >
+            decrement
+        </button>
+        <form onSubmit={(e) => byAmountSubmit(e)}>
+                <input type="number" onChange={(e) => setInput(e.target.value)} />
+                <button type="submit">Submit</button>
+            </form>
       </div>
     );
   }
