@@ -15,16 +15,23 @@ export const todoSlice = createSlice({
             console.log(action)
             let arr = [...state.items]
             let i = action.payload
-            if(i != -1) {
+            if(i !== -1) {
                 arr.splice(i, 1)
                 return {items: arr}
             }
         },
         clearToDo: () => {
-            return { items : {}}
+            return { items : []}
         }
     
     }
 })
-export const { addToDo, clearToDo} = todoSlice.actions
+export const { addToDo, remove, clearToDo} = todoSlice.actions
 export default todoSlice.reducer
+
+    
+     
+    
+           
+       
+

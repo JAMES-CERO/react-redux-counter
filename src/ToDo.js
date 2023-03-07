@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToDo, clearToDo } from "./features/ToDoSlice";
+import { addToDo, remove, clearToDo } from "./features/ToDoSlice";
 
 const ToDo = () => {
 
@@ -8,9 +8,7 @@ const ToDo = () => {
     const dispatch = useDispatch()
     const [input, setInput] = useState('')
 
-    const renderList = list.map((item, i) => {
-        <li key={i} onClick={() => dispatch(remove(i))} >{item}</li>
-    })
+    const renderList = list.map((item, i) =>  <li key={i} onClick={() => dispatch(remove(i))} >{item}</li>)
 
     const submitForm = (e) => {
         e.preventDefault()
