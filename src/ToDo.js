@@ -4,7 +4,7 @@ import { addToDo, remove, clearToDo } from "./features/ToDoSlice";
 
 const ToDo = () => {
 
-    const list = useSelector((state) => state.toDo.value)
+    const list = useSelector((state) => state.toDo.items)
     const dispatch = useDispatch()
     const [input, setInput] = useState('')
 
