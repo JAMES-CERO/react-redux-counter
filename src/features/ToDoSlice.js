@@ -8,11 +8,20 @@ export const todoSlice = createSlice({
     name: 'ToDoList',
     initialState,
     reducers: { 
-        addToDo: (state) => {
-            return {value: state.value }
+        addToDo: (state, action) => {
+            return { items: [...state.items, action.payload] }
         },
-        clearToDo: (state, action) => {
-            return { value: state.value + action.clear}
+        remove: (state, action) => {
+            console.log(action)
+            let arr = [...state.items]
+            let i = action.payload
+            if(i != -1) {
+                arr.splice(i, 1)
+                return {items: arr}
+            }
+        },
+        clearToDo: () => {
+            return { items : {}}
         }
     
     }

@@ -18,15 +18,13 @@ const ToDo = () => {
     }
     return (
         <div>
-            <h1>{renderList}</h1>
-            {/* <button onClick={() => dispatch(addToDo())}>
-                add an Item
-            </button> */}
-
             <form onSubmit={(e) => submitForm(e)} >
                 <input type='text' onChange={(e) => setInput(e.target.value)} />
                 <button  type="submit" >Submit</button>
             </form >
+            <ul>
+                {renderList}
+            </ul>
             <button onClick={() => dispatch(clearToDo())}>
                 clear item
             </button>
